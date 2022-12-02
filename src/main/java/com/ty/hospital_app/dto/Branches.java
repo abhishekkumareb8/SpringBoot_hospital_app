@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Branch {
+public class Branches {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
