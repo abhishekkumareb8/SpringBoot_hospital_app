@@ -22,7 +22,7 @@ public class Encounter {
 	
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Branch>branches;
+	private List<Branches>branches;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<MedOrder>medorders;
@@ -51,11 +51,11 @@ public class Encounter {
 		this.reason = reason;
 	}
 
-	public List<Branch> getBranches() {
+	public List<Branches> getBranches() {
 		return branches;
 	}
 
-	public void setBranches(List<Branch> branches) {
+	public void setBranches(List<Branches> branches) {
 		this.branches = branches;
 	}
 

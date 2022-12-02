@@ -23,7 +23,7 @@ public class Hospital {
 	private String hospitalHead;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Branch>branches;
+	private List<Branches>branches;
 
 	public int getId() {
 		return id;
@@ -57,11 +57,11 @@ public class Hospital {
 		hospitalHead = manager;
 	}
 
-	public List<Branch> getBranches() {
+	public List<Branches> getBranches() {
 		return branches;
 	}
 
-	public void setBranches(List<Branch> branches) {
+	public void setBranches(List<Branches> branches) {
 		this.branches = branches;
 	}
 
