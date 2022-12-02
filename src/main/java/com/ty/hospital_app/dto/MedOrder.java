@@ -10,20 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-public class Hospital {
+public class MedOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    @NotNull
-	private String name;
-    @NotNull
-	private long phone;
-	private String hospitalHead;
+	@NotNull
+	private String  name;
+	private int date;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Branch>branches;
+	private List<Items>items;
 
 	public int getId() {
 		return id;
@@ -41,36 +38,25 @@ public class Hospital {
 		this.name = name;
 	}
 
-	public long getPhone() {
-		return phone;
+	public int getDate() {
+		return date;
 	}
 
-	public void setPhone(long phone) {
-		this.phone = phone;
+	public void setDate(int date) {
+		this.date = date;
 	}
 
-	public String getManager() {
-		return hospitalHead;
+	public List<Items> getItems() {
+		return items;
 	}
 
-	public void setManager(String manager) {
-		hospitalHead = manager;
-	}
-
-	public List<Branch> getBranches() {
-		return branches;
-	}
-
-	public void setBranches(List<Branch> branches) {
-		this.branches = branches;
+	public void setItems(List<Items> items) {
+		this.items = items;
 	}
 
 	@Override
 	public String toString() {
-		return "Hospital [id=" + id + ", name=" + name + ", phone=" + phone + ", Manager=" + hospitalHead + ", branches="
-				+ branches + "]";
+		return "MedOrder [id=" + id + ", name=" + name + ", date=" + date + ", items=" + items + "]";
 	}
-	
-
 
 }
