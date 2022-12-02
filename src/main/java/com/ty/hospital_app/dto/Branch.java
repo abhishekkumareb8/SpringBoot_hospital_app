@@ -1,30 +1,28 @@
 package com.ty.hospital_app.dto;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-public class Hospital {
+public class Branch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    @NotNull
+	@NotNull
 	private String name;
-    @NotNull
+	@NotNull
 	private long phone;
-	private String hospitalHead;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Branch>branches;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address;
 
+	
 	public int getId() {
 		return id;
 	}
@@ -49,28 +47,19 @@ public class Hospital {
 		this.phone = phone;
 	}
 
-	public String getManager() {
-		return hospitalHead;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setManager(String manager) {
-		hospitalHead = manager;
-	}
-
-	public List<Branch> getBranches() {
-		return branches;
-	}
-
-	public void setBranches(List<Branch> branches) {
-		this.branches = branches;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
-		return "Hospital [id=" + id + ", name=" + name + ", phone=" + phone + ", Manager=" + hospitalHead + ", branches="
-				+ branches + "]";
+		return "Branch [id=" + id + ", name=" + name + ", phone=" + phone + ", address=" + address + "]";
 	}
 	
-
+	
 
 }

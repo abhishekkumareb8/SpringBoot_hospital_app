@@ -1,5 +1,6 @@
 package com.ty.hospital_app.dto;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,20 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-public class Hospital {
+public class Encounter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    @NotNull
+	@NotNull
 	private String name;
-    @NotNull
-	private long phone;
-	private String hospitalHead;
+	private String reason;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Branch>branches;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<MedOrder>medorders;
 
 	public int getId() {
 		return id;
@@ -41,20 +43,12 @@ public class Hospital {
 		this.name = name;
 	}
 
-	public long getPhone() {
-		return phone;
+	public String getReason() {
+		return reason;
 	}
 
-	public void setPhone(long phone) {
-		this.phone = phone;
-	}
-
-	public String getManager() {
-		return hospitalHead;
-	}
-
-	public void setManager(String manager) {
-		hospitalHead = manager;
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	public List<Branch> getBranches() {
@@ -65,12 +59,20 @@ public class Hospital {
 		this.branches = branches;
 	}
 
+	public List<MedOrder> getMedorders() {
+		return medorders;
+	}
+
+	public void setMedorders(List<MedOrder> medorders) {
+		this.medorders = medorders;
+	}
+
 	@Override
 	public String toString() {
-		return "Hospital [id=" + id + ", name=" + name + ", phone=" + phone + ", Manager=" + hospitalHead + ", branches="
-				+ branches + "]";
+		return "Encounter [id=" + id + ", name=" + name + ", reason=" + reason + ", branches=" + branches
+				+ ", medorders=" + medorders + "]";
 	}
+
 	
-
-
+	
 }
