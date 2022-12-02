@@ -9,6 +9,8 @@ import com.ty.hospital_app.dto.Hospital;
 import com.ty.hospital_app.repository.HospitalRepository;
 @Repository
 public class HospitalDao {
+	
+	
 	@Autowired
 	private HospitalRepository repository;
 	
