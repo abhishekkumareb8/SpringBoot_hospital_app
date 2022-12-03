@@ -37,6 +37,7 @@ public class PersonService {
     	   responseStructure.setMessage("Person detail updated Sucessfully");
     	   responseStructure.setData(dao.updatePerson(person));
        }
+
        else {
     	   throw new UnableToUpdateException();
        }
@@ -60,9 +61,7 @@ public class PersonService {
        
        return entity;
 		
-		
-	}
-	
+
 	
 	public ResponseEntity<ResponseStructure<String>>   deletePerson(int id){
 		Person person = dao.getPersonById(id);
@@ -78,7 +77,6 @@ public class PersonService {
        }
        
        return entity;
-		
 		
 	}
 
