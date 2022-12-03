@@ -30,7 +30,7 @@ public class PersonService {
 	public ResponseEntity<ResponseStructure<Person>> updatePerson(Person person,int id){
 		Person person2 = dao.getPersonById(id);
 		ResponseStructure<Person> responseStructure = new ResponseStructure<>();
-		ResponseEntity<ResponseStructure<Person>> entity  = new ResponseEntity<ResponseStructure<Person>>(responseStructure,HttpStatus.CREATED);
+		ResponseEntity<ResponseStructure<Person>> entity  = new ResponseEntity<ResponseStructure<Person>>(responseStructure,HttpStatus.OK);
        if(person2!=null) {
     	   person.setId(id);
     	   responseStructure.setStatus(HttpStatus.OK.value());
@@ -49,7 +49,7 @@ public class PersonService {
 	public ResponseEntity<ResponseStructure<Person>>   getPerson(int id){
 		Person person = dao.getPersonById(id);
 		ResponseStructure<Person> responseStructure = new ResponseStructure<>();
-		ResponseEntity<ResponseStructure<Person>> entity  = new ResponseEntity<ResponseStructure<Person>>(responseStructure,HttpStatus.CREATED);
+		ResponseEntity<ResponseStructure<Person>> entity  = new ResponseEntity<ResponseStructure<Person>>(responseStructure,HttpStatus.OK);
        if(person!=null) {
     	   responseStructure.setStatus(HttpStatus.OK.value());
     	   responseStructure.setMessage("person detail received sucessfully");
@@ -60,13 +60,14 @@ public class PersonService {
        }
        
        return entity;
+	}
 		
 
 	
 	public ResponseEntity<ResponseStructure<String>>   deletePerson(int id){
 		Person person = dao.getPersonById(id);
 		ResponseStructure<String> responseStructure = new ResponseStructure<>();
-		ResponseEntity<ResponseStructure<String>> entity  = new ResponseEntity<ResponseStructure<String>>(responseStructure,HttpStatus.CREATED);
+		ResponseEntity<ResponseStructure<String>> entity  = new ResponseEntity<ResponseStructure<String>>(responseStructure,HttpStatus.OK);
        if(person!=null) {
     	   responseStructure.setStatus(HttpStatus.OK.value());
     	   responseStructure.setMessage("person detail deleted sucessfully");

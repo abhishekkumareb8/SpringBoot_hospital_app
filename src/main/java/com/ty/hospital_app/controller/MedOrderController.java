@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ty.hospital_app.dto.Branches;
-import com.ty.hospital_app.services.BranchesService;
+import com.ty.hospital_app.dto.MedOrder;
+import com.ty.hospital_app.services.MedOrderService;
 import com.ty.hospital_app.util.ResponseStructure;
 
 import io.swagger.annotations.ApiOperation;
@@ -19,26 +19,27 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("branch")
-public class BranchesController {
-
+@RequestMapping("medorder")
+public class MedOrderController {
+	
 	@Autowired
-	private BranchesService service ;
+	private MedOrderService service; 
+
+	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
+			@ApiResponse(code = 500,message = "Internal server Error"),
+			@ApiResponse(code = 404,message = "Not found")})
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ResponseStructure<MedOrder>> getMedOrderbyId(@RequestParam int id){
+		return service.getMedOrderById(id);
+	}
 	
 	@ApiOperation(value = "Save User", notes = "It is used to save User")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<Branches>> updateBranchesById(@RequestBody Branches branches,@RequestParam int id){
-		return service.updateBranches(branches, id);
-	}
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
-	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
-			@ApiResponse(code = 500,message = "Internal server Error"),
-			@ApiResponse(code = 404,message = "Not found")})
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseStructure<Branches>> getBranchesById(@RequestParam int id){
-		return service.getBranches(id);
+	public ResponseEntity<ResponseStructure<MedOrder>> updateMedOrder(@RequestBody MedOrder medOrder , @RequestParam int id){
+		return service.UpdateMedOrder(medOrder, id);
 	}
 }

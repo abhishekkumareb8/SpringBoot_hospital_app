@@ -22,10 +22,9 @@ public class ApplicationConfig {
 
 		Contact contact = new Contact("ty", "testyantra.com", "testyantra@gmail.com");
 		List<VendorExtension> extensions = new ArrayList<VendorExtension>();
-		ApiInfo apiInfo = new ApiInfo("Food App", "Boot app for food app", "1.0", "testyantra.com", contact,
+		ApiInfo apiInfo = new ApiInfo("Hospital App", "Boot app for hospital App", "1.0", "testyantra.com", contact,
 				"apache tomcat", "www.apache.com", extensions);
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.ty.foodboot.springboot_foodapp")).build();
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.ty.hospital_app")).build();
 	}
 
 }
