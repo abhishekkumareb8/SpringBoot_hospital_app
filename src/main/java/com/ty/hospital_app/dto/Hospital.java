@@ -25,45 +25,67 @@ public class Hospital {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Branches>branches;
 
+	
+
 	public int getId() {
 		return id;
 	}
+
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
+
 	public String getName() {
 		return name;
 	}
+
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+
+
 	public long getPhone() {
 		return phone;
 	}
+
+
 
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 
-	public String getManager() {
+
+
+	public String getHospitalHead() {
 		return hospitalHead;
 	}
 
-	public void setManager(String manager) {
-		hospitalHead = manager;
+
+
+	public void setHospitalHead(String hospitalHead) {
+		this.hospitalHead = hospitalHead;
 	}
+
+
 
 	public List<Branches> getBranches() {
 		return branches;
 	}
 
+
+
 	public void setBranches(List<Branches> branches) {
 		this.branches = branches;
 	}
+
+
 
 	@Override
 	public String toString() {
