@@ -1,5 +1,7 @@
 package com.ty.hospital_app.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,7 @@ public class ItemsController {
 	@Autowired
 	private ItemsService service; 
 
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Get Items", notes = "It is used to Get Items")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
@@ -33,12 +35,12 @@ public class ItemsController {
 	public ResponseEntity<ResponseStructure<Items>>  getItemsById(@RequestParam int id){
 		return service.getItemsById(id);
 	}
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Update Items", notes = "It is used to Update Items")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<Items>> updateItemsById(@RequestBody Items items,@RequestParam int id){
+	public ResponseEntity<ResponseStructure<Items>> updateItemsById(@RequestBody @Valid  Items items,@RequestParam int id){
 		return service.UpdateItems(items, id);
 	}
 }

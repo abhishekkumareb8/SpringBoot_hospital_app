@@ -16,15 +16,12 @@ public class Encounter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull
 	private String name;
 	private String reason;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL)
 	private List<Branches>branches;
 	
-	@OneToMany(cascade = CascadeType.ALL)
 	private List<MedOrder>medorders;
 
 	public int getId() {

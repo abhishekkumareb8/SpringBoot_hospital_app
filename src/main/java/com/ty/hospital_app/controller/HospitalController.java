@@ -30,7 +30,7 @@ public class HospitalController {
 	private HospitalService service ;
 	
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Save Hospital", notes = "It is used to save Hospital")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
@@ -39,7 +39,7 @@ public class HospitalController {
 		return service.saveHospital(hospital);
 	}
 	 
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Get Hospital", notes = "It is used to Get Hospital")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
@@ -48,15 +48,19 @@ public class HospitalController {
 		return service.getHospital(id);
 	}
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Update Hospital", notes = "It is used to Update Hospital")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<Hospital>> updateHospitalById(@RequestBody Hospital hospital , @RequestParam int id){
+	public ResponseEntity<ResponseStructure<Hospital>> updateHospitalById(@RequestBody @Valid  Hospital hospital , @RequestParam int id){
 		return service.updateHospital(hospital, id);
 	}
 	
+	@ApiOperation(value = "Delete Hospital", notes = "It is used to Delete Hospital")
+	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
+			@ApiResponse(code = 500,message = "Internal server Error"),
+			@ApiResponse(code = 404,message = "Not found")})
 	@DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseStructure<String>> deleteByID(@RequestParam int id){
 		return  service.deleteHospital(id);

@@ -1,5 +1,7 @@
 package com.ty.hospital_app.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,15 +27,15 @@ public class BranchesController {
 	@Autowired
 	private BranchesService service ;
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Update Branches", notes = "It is used to Update Branches")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<Branches>> updateBranchesById(@RequestBody Branches branches,@RequestParam int id){
+	public ResponseEntity<ResponseStructure<Branches>> updateBranchesById(@RequestBody @Valid  Branches branches,@RequestParam int id){
 		return service.updateBranches(branches, id);
 	}
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Get Branches", notes = "It is used to Get Branches")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})

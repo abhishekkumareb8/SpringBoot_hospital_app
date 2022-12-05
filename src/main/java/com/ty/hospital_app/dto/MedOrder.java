@@ -15,11 +15,9 @@ public class MedOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull
 	private String  name;
 	private int date;
 	
-	@OneToMany(cascade = CascadeType.ALL)
 	private List<Items>items;
 
 	public int getId() {

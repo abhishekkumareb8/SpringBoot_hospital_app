@@ -11,11 +11,8 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull
 	private String addressName;
-	@NotNull
 	private String location;
-	@NotNull
 	
 	private int pincode;
 	

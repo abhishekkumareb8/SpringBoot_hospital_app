@@ -1,5 +1,7 @@
 package com.ty.hospital_app.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,7 @@ public class MedOrderController {
 	@Autowired
 	private MedOrderService service; 
 
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Get MedOrder", notes = "It is used to Get MedOrder")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
@@ -34,12 +36,12 @@ public class MedOrderController {
 		return service.getMedOrderById(id);
 	}
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Update MedOrder", notes = "It is used to Update MedOrder")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<MedOrder>> updateMedOrder(@RequestBody MedOrder medOrder , @RequestParam int id){
+	public ResponseEntity<ResponseStructure<MedOrder>> updateMedOrder(@RequestBody @Valid MedOrder medOrder , @RequestParam int id){
 		return service.UpdateMedOrder(medOrder, id);
 	}
 }

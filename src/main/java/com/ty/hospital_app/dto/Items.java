@@ -20,6 +20,16 @@ public class Items {
 	private int quantity;
 	@NotNull
 	private int price;
+	
+	private int totelPrivce;
+
+	public int getTotelPrivce() {
+		return totelPrivce;
+	}
+
+	public void setTotelPrivce(int totelPrivce) {
+		this.totelPrivce = totelPrivce;
+	}
 
 	public int getId() {
 		return id;
