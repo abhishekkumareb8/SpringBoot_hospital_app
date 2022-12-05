@@ -1,5 +1,7 @@
 package com.ty.hospital_app.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,16 +29,16 @@ public class PersonController {
 	@Autowired
 	private PersonService service;
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Save Person", notes = "It is used to save Person")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_ATOM_XML_VALUE},produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseStructure<Person>> savePerson(@RequestBody Person person){
+	public ResponseEntity<ResponseStructure<Person>> savePerson(@RequestBody @Valid  Person person){
 		return service.savePerson(person);
 	} 
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Get Person", notes = "It is used to Get Person")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
@@ -45,16 +47,16 @@ public class PersonController {
 		return service.getPerson(id);
 	}
 
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Update Person", notes = "It is used to Update Person")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<Person>> updatePersonById(@RequestBody Person person, @RequestParam int id){
+	public ResponseEntity<ResponseStructure<Person>> updatePersonById(@RequestBody @Valid  Person person, @RequestParam int id){
 		return service.updatePerson(person, id);
 	}
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Delete Person", notes = "It is used to Delete Person")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})

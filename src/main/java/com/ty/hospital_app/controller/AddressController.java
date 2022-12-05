@@ -1,5 +1,7 @@
 package com.ty.hospital_app.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,16 +27,16 @@ public class AddressController {
 	@Autowired
 	private AddressService service;
 
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Update Address", notes = "It is used to Update Address")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,consumes = {MediaType.APPLICATION_ATOM_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-	public ResponseEntity<ResponseStructure<Address>> updateAddrss(@RequestBody Address address,@RequestParam int id ){
+	public ResponseEntity<ResponseStructure<Address>> updateAddrss(@RequestBody @Valid  Address address,@RequestParam int id ){
 		return service.updateAddress(address, id);
 	}
 	
-	@ApiOperation(value = "Save User", notes = "It is used to save User")
+	@ApiOperation(value = "Get Address", notes = "It is used to Get Address")
 	@ApiResponses(value = {@ApiResponse(code = 201,message = "Created"),
 			@ApiResponse(code = 500,message = "Internal server Error"),
 			@ApiResponse(code = 404,message = "Not found")})

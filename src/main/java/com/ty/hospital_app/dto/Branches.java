@@ -14,9 +14,7 @@ public class Branches {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull
 	private String name;
-	@NotNull
 	private long phone;
 	
 	@OneToOne(cascade = CascadeType.ALL)

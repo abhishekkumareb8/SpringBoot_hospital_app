@@ -24,7 +24,6 @@ public class Person {
 	@NotNull
     private String password;
     
-    @OneToMany(cascade = CascadeType.ALL)
     private List<Encounter>encounter;
 
     
