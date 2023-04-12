@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: csk
+  name: csk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: csk
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: csk
+    spec:
+      containers:
+      - image: demoaksacr2.azurecr.io/csk
+        name: csk
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
